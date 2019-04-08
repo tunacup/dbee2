@@ -10,9 +10,19 @@ $uemail=$_POST['uemail'];
 $upassw=$_POST['upassw'];
 
 $q1="select * from user where email = '$uemail';";
-$result1=$mysqli->query($q1);
+
+$queryJobConfig = $bigQuery->query($q1);
+$job = $bigQuery->startQuery($queryJobConfig);
+$queryResults = $job->queryResults();
+if ($queryResults->isComplete()) {
+	
+	foreach ($queryResults as $row) 
+}
+
+/*$result1=$mysqli->query($q1);
 $row1=$result1->fetch_array();
-$udid=$row1['user_id'];
+$udid=$row1['user_id']; */
+		
 $_SESSION["udid"]=$udid;
 $_SESSION["f_name"]=$row1['f_name'];
 
